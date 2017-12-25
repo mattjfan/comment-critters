@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='UTF-8'>
+
+	<title>Bubble Point Tooltips with CSS3, HTML5, & jQuery</title>
+
+	<link rel='stylesheet' href='css/style.css'>
+	<link rel='stylesheet' href='css/tooltips.css'>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+	<!--[if !IE | (gt IE 8)]><!-->
+	<!--<![endif]-->
+
+</head>
+
+<body>
+  <!--comment-->
+	<div id="page-wrap">
+
+		<h1><span>Bubble Point</span> Tooltips</h1>
+
+		<p><i title='waha'>Pellentesque</i> habitant morbi tristique <a href="#" title="I ❤ ">senectus</a> et netus et malesuada fames ac <a href="#" title="Hi, I'm a tooltip thingy.">turpis</a> egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat <a href="#" title="Ooooh<br>Look at me<br>I'm a fancy tooltip">eleifend</a> leo.</p>
+    <center><img id='critter' src='img/critter1.png' title='lahaha'></img></center>
+	</div>
+
+<!--gribble-->
+</body>
+<script src="js/critter.js"></script>
+<script>
+  var comments = $('body').html().match(/<!--[\s\S]*?-->/g);
+  comments = comments.slice(0,comments.length-1);
+  var newComments = [];
+  for (var i = 0; i <comments.length; i++){
+    newComments.push(comments[i].slice(4,comments[i].length-3));
+  }
+  $('#critter').attr('title',newComments[Math.floor(Math.random()*newComments.length)]);
+  /*
+  for (var i = 0; i <newComments.length; i++){
+    $('#comments').text($('#comments').text()+"\n"+newComments[i]);
+  }
+  */
+  $(function() {
+    $("#critter").tooltips();
+  });
+</script>
+
+
+</html>
